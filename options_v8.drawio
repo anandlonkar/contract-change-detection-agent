@@ -1,0 +1,168 @@
+<mxfile host="65bd71144e">
+    <diagram name="Option 1: Step Functions Orchestration" id="0">
+        <mxGraphModel dx="1433" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="SFN_Box" value="AWS Step Functions (State Machine Orchestrator)" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="210" y="40" width="900" height="760" as="geometry"/>
+                </mxCell>
+                <mxCell id="N2" value="Read Contract and&#xa;Extract Text&#xa;(AWS Textract)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="40" y="60" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="NPII" value="PII Detection Pass&#xa;(Comprehend PII&#xa;Tag and Redact)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="220" y="60" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N3" value="Extract Entities&#xa;(Amazon Comprehend)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="400" y="60" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N4" value="Query PMIS&#xa;(Fetch Project Record&#xa;and Residency)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="580" y="50" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="N5" value="Extract Changes&#xa;(Bedrock Agent)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="740" y="60" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N6" value="HITL 1: Review&#xa;Changes" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="750" y="180" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="N7" value="Assess Cost/Schedule Impact&#xa;(Bedrock + Code Interpreter)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="700" y="340" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N8" value="HITL 2: Final&#xa;ERP Approval" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="750" y="460" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="N9" value="Update ERP / PMIS&#xa;(Lambda API Call)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="480" y="460" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="NCN1" value="Deterministic Template&#xa;Selection (from PMIS&#xa;project record)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="250" y="350" width="150" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="NCN2" value="Change Notice Draft&#xa;Agent (Strands + Template)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="40" y="480" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="NCN3" value="HITL 3: Redline Review&#xa;(Human commercial manager&#xa;reviews and edits draft)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="40" y="610" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="NCL1" value="Register Task Token&#xa;(Claim Lifecycle Tracker&#xa;Detected - Submitted - Closed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="450" y="615" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="NCL2" value="EventBridge Poller&#xa;(Idempotent PMIS query.&#xa;Eventually consistent.)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SFN_Box" vertex="1">
+                    <mxGeometry x="700" y="620" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2" parent="SFN_Box" source="N2" target="NPII" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2b" parent="SFN_Box" source="NPII" target="N3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E3" parent="SFN_Box" source="N3" target="N4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E4" parent="SFN_Box" source="N4" target="N5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E5" value="Wait for Task Token" parent="SFN_Box" source="N5" target="N6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E6" value="Approved" parent="SFN_Box" source="N6" target="N7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E7" value="Wait for Task Token" parent="SFN_Box" source="N7" target="N8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E8" value="Approved" parent="SFN_Box" source="N8" target="N9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ECN1" value="Trigger Draft" parent="SFN_Box" source="N9" target="NCN1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ECN2" value="Template Selected" parent="SFN_Box" source="NCN1" target="NCN2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ECN3" value="Wait for Task Token" parent="SFN_Box" source="NCN2" target="NCN3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ECL1" value="Register Token" parent="SFN_Box" source="N9" target="NCL1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ECL2" parent="SFN_Box" source="NCL1" target="NCL2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Option 2: Strands + AgentCore Hub" id="1">
+        <mxGraphModel dx="913" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="AC_Box" value="Amazon Bedrock AgentCore Runtime" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="250" y="80" width="700" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="Agent" value="AWS Strands Supervisor Agent&#xa;(Reasoning and State Loop)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="AC_Box" vertex="1">
+                    <mxGeometry x="270" y="220" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="T2" value="Tool: Textract / Parser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="AC_Box" vertex="1">
+                    <mxGeometry x="40" y="60" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="TPII" value="Tool: PII Detection&#xa;(Comprehend PII Tag and Redact)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="AC_Box" vertex="1">
+                    <mxGeometry x="520" y="60" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="T3" value="Tool: PMIS Vector / Context&#xa;(Lineage + Project Record)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="AC_Box" vertex="1">
+                    <mxGeometry x="40" y="160" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="T4" value="Tool: AgentCore&#xa;Code Interpreter (Math)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="AC_Box" vertex="1">
+                    <mxGeometry x="40" y="440" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="T5" value="MCP Tool: Update ERP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="AC_Box" vertex="1">
+                    <mxGeometry x="520" y="340" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="TCN" value="Tool: Template Retrieval&#xa;(Deterministic lookup from&#xa;PMIS project record)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="AC_Box" vertex="1">
+                    <mxGeometry x="520" y="440" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="TCL" value="Tool: PMIS Poller&#xa;(EventBridge, Idempotent&#xa;claim state observer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="AC_Box" vertex="1">
+                    <mxGeometry x="40" y="540" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <!-- Edges inside AgentCore -->
+                <mxCell id="EA2" value="1. Parse" parent="AC_Box" source="Agent" target="T2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="EAPII" value="2. PII Pass" parent="AC_Box" source="Agent" target="TPII" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="EA3" value="3. Fetch Context" parent="AC_Box" source="Agent" target="T3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="EA5" value="5. Assess Impact" parent="AC_Box" source="Agent" target="T4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="EA7" value="7. Execute ERP Update" parent="AC_Box" source="Agent" target="T5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="EACN" value="8. Draft Change Notice" parent="AC_Box" source="Agent" target="TCN" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="EACL" value="9. Observe Claim State" parent="AC_Box" source="Agent" target="TCL" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+            <!-- External nodes outside AgentCore box -->
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="T1" value="Unstructured PDF" style="shape=document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="350" width="100" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="QApp" value="Amazon Q Apps&#xa;(HITL UI: Extraction Review,&#xa;ERP Approval, Redline Review)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1010" y="300" width="180" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="TemplateRepo" value="Template Repository&#xa;(S3 / ProjectWise)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="1010" y="460" width="140" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="PMISExternal" value="PMIS&#xa;(System of Record)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="1010" y="580" width="140" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
