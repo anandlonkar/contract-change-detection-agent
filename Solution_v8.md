@@ -2,6 +2,48 @@
 **Date:** 2026-04-27
 **Subject:** Comprehensive Technical Solution Proposal for Tariff Change Management
 
+## Assignment Coverage Map
+
+| Assignment Requirement | Section |
+|---|---|
+| **Task 1 — Solution Architecture** | |
+| Core system components | [§1.1 Core AI Components](#11-core-ai-components--responsibilities) |
+| AI/agent usage | [§1.1](#11-core-ai-components--responsibilities), [§7 Tradeoffs](#7-key-architectural-tradeoffs--ai-boundary-constraints), [§A.1 Agentic Framework](#a1-agentic-framework--infrastructure-aws-strands--agentcore) |
+| Data flow and integration points | [§1.2 Data Payload Lifecycle](#12-data-payload-lifecycle--flow), [§3 Integration Strategy](#3-integration-strategy) |
+| Human-in-the-loop touchpoints | [§1.1](#11-core-ai-components--responsibilities), [§2.2 Autonomy Lifecycle](#22-the-autonomy-progression-lifecycle-production) |
+| Security and governance | [§5 Security, Access & Governance](#5-security-access--governance) |
+| **Task 2 — AI Usage Design** | |
+| Where AI is used | [§1.1](#11-core-ai-components--responsibilities), [§7](#7-key-architectural-tradeoffs--ai-boundary-constraints) |
+| Where AI is NOT used | [§7 — financial arithmetic, template selection, residency routing](#7-key-architectural-tradeoffs--ai-boundary-constraints) |
+| How autonomy levels are determined | [§2.2 Autonomy Progression](#22-the-autonomy-progression-lifecycle-production) |
+| Where human review is required | [§1.1 — three named HITL touchpoints](#11-core-ai-components--responsibilities) |
+| How risk is mitigated | [§1.3 Schema Enforcement](#13-forcing-probabilistic-ai-into-deterministic-outcomes), [§6 Failure Modes](#6-failure-modes--system-recovery) |
+| **Task 3 — Integration Strategy** | |
+| Enterprise data sources | [§3 — PMIS, ERP, document repositories](#3-integration-strategy) |
+| Workflow systems | [§3 — Step Functions, EventBridge, PMIS handoff](#3-integration-strategy) |
+| Action systems (notifications, document generation) | [§1.1 Change Notice Drafting Agent](#11-core-ai-components--responsibilities), [§3](#3-integration-strategy) |
+| **Task 4 — Observability & Operations** | |
+| Logging and telemetry | [§4.2 Observability Tools](#42-observability-tools), [§5.3 Audit Governance](#53-audit-governance) |
+| AI performance monitoring | [§2.1 Evaluation Framework](#21-pre-production-ai-evaluation-the-evaluation-framework) |
+| Failure handling and fallbacks | [§6 Failure Modes](#6-failure-modes--system-recovery) |
+| Scaling strategy | [§4.1 System Scaling](#41-system-scaling--load-leveling) |
+| **Task 5 — Delivery Considerations** | |
+| Key risks | [§8.2 Key Risks](#82-key-risks) |
+| Phased rollout strategy | [§8.1 Phased Rollout](#81-phased-rollout-strategy) |
+| Technical dependencies | [§8.3 Technical Dependencies](#83-technical-dependencies) |
+| **Scenario Requirements** | |
+| Detect contract change signals | [§1.1 — Textract + Comprehend NER pipeline](#11-core-ai-components--responsibilities) |
+| Draft change notices | [§1.1 Change Notice Drafting Agent](#11-core-ai-components--responsibilities), [§3](#3-integration-strategy) |
+| Quantify schedule and cost impacts | [§1.1 Impact Assessment Agents](#11-core-ai-components--responsibilities) |
+| Track change and claim lifecycle | [§1.1 Claim Lifecycle Tracker](#11-core-ai-components--responsibilities), [§1.2 step 8](#12-data-payload-lifecycle--flow) |
+| Integrate with PMIS, ERP, document repositories | [§3 Integration Strategy](#3-integration-strategy) |
+| Support human review and escalation | [§1.1](#11-core-ai-components--responsibilities), [§5.2 Action Governance](#52-action-governance) |
+| Incomplete and inconsistent data | [§1.4 Edge Cases](#14-handling-edge-cases-incomplete--inconsistent-data) |
+| Legal concerns about AI-drafted outputs | [§1.1 — "AI drafts; human owns and signs"](#11-core-ai-components--responsibilities) |
+| Multiple enterprise systems | [§3 — modern API + legacy batch + MCP gateway](#3-integration-strategy) |
+| Governance and compliance | [§5 Security, Access & Governance](#5-security-access--governance) |
+| Mixed levels of AI autonomy | [§2.2 Autonomy Progression](#22-the-autonomy-progression-lifecycle-production) |
+
 ---
 
 ## 1. Solution Architecture & Granular Workflows
