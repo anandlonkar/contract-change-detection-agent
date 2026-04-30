@@ -396,4 +396,4 @@ Each entry records the decision, the rationale, and the tradeoffs explicitly con
 
 ---
 
-*Prepared for AECOM Operational AI — Senior Solution Architect interview process, April 2026.*
+*Prepared for AECOM Operational AI — Principal Solution Architect interview process, April 2026.*
