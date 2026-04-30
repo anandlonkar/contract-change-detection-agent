@@ -216,3 +216,8 @@ If the business objective is to prioritize speed-to-market and eliminate the fro
 * **Agentic Workspace:** Amazon Q provides a secure, out-of-the-box enterprise UI. Reviewers log in via IAM Identity Center.
 * **Human-in-the-Loop Orchestration:** The Q App interfaces with the underlying Bedrock Knowledge Bases and Strands/AgentCore logic. Analysts review the proposed impacts natively in the Q interface and execute approvals, which trigger the AgentCore Gateway plugins to update the ERP.
 * **Tradeoff:** This drastically reduces UI development time but requires adapting the Human Review workflow to fit within the Amazon Q App's conversational interface paradigm.
+
+## Notes
+The ideas and architecture are my own. AI was used in the following ways in creation of this repo. 
+* **Sparring Partner:** AI was used as a architect assistant to discuss pros and cons of each of the approaches and architectural decisions. 
+* **Writing assistant:** AI was used to consolidate the discussion and create this md file.
