@@ -1,0 +1,247 @@
+<mxfile host="65bd71144e">
+    <diagram name="Deployment: Step Functions (Custom)" id="0">
+        <mxGraphModel dx="1193" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="AWS_Cloud_1" value="AWS Cloud Boundary (VPC / Execution Environment)" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;fillColor=none;strokeColor=#FF9900;dashed=1;strokeWidth=2;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="1320" height="820" as="geometry"/>
+                </mxCell>
+
+                <!-- Observability and Governance Plane -->
+                <mxCell id="Obs_Plane_1" value="Observability and Governance Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;strokeColor=#b85450;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="80" width="260" height="740" as="geometry"/>
+                </mxCell>
+                <mxCell id="CW_1" value="Amazon CloudWatch&#xa;(Logs, Metrics, Alarms)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="130" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="XRay_1" value="AWS X-Ray / OTel&#xa;(Distributed Tracing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="220" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="AuditLog_1" value="S3 Object Lock (WORM)&#xa;Immutable Audit Records&#xa;(AI output vs Human approval,&#xa;legally admissible)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="310" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="KMS_1" value="AWS KMS&#xa;(Encryption at Rest)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="510" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="IAM_1" value="AWS IAM&#xa;(Least Privilege Execution Roles&#xa;+ Threshold-Based Escalation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="590" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="CloudTrail_1" value="AWS CloudTrail&#xa;(API-level Action Log)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="420" width="200" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- Compute and Orchestration Plane -->
+                <mxCell id="Comp_Plane_1" value="Compute and Orchestration Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="80" width="440" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="SFN_1" value="AWS Step Functions&#xa;(State Machine + Claim Lifecycle Tracker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="180" y="140" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Lambda_Pool" value="AWS Lambda Pool&#xa;(Parsing, PII Pass, Chunking, Logic)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="260" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="SQS_1" value="Amazon SQS&#xa;(Dead Letter and Retries)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="380" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="EventBridge_1" value="EventBridge Scheduler&#xa;(PMIS Claim State Poller)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="470" width="200" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- Managed AI Services Plane -->
+                <mxCell id="AI_Plane_1" value="Managed AI Services Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="560" y="80" width="460" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="Textract_1" value="Amazon Textract&#xa;(OCR API Endpoint)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="140" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="CompPII_1" value="Amazon Comprehend PII&#xa;(Tag and Redact Pass)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="140" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Comp_1" value="Amazon Comprehend&#xa;(Custom NER Endpoint)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="250" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Bedrock_1" value="Amazon Bedrock&#xa;(Strands Agent / Lineage + Draft)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="360" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="TemplateRepo_1" value="Template Repository&#xa;(S3 / ProjectWise&#xa;Change Notice Templates)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="340" width="160" height="90" as="geometry"/>
+                </mxCell>
+
+                <!-- Storage and Data Plane -->
+                <mxCell id="Data_Plane_1" value="Storage and Data Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="620" width="940" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="S3_1" value="Amazon S3&#xa;(PDFs and Clean Text)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="670" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Aurora_1" value="Aurora pgvector&#xa;(Thin Vector Index)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="670" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Iceberg_1" value="Apache Iceberg&#xa;(Fat Payload Metadata)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="670" width="140" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="FeedbackStore_1" value="Feedback Store&#xa;(Human Corrections&#xa;for Model Improvement)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="670" width="160" height="80" as="geometry"/>
+                </mxCell>
+
+                <!-- Key edges -->
+                <mxCell id="E_SFN_Lam" parent="1" source="SFN_1" target="Lambda_Pool" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E_Lam_Tex" parent="1" source="Lambda_Pool" target="Textract_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E_Lam_PII" parent="1" source="Lambda_Pool" target="CompPII_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E_Lam_Comp" parent="1" source="Lambda_Pool" target="Comp_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E_Lam_Bed" parent="1" source="Lambda_Pool" target="Bedrock_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E_Bed_Tmpl" parent="1" source="Bedrock_1" target="TemplateRepo_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E_SFN_EB" parent="1" source="SFN_1" target="EventBridge_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E_Lam_Feed" parent="1" source="Lambda_Pool" target="FeedbackStore_1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="290" y="600"/>
+                            <mxPoint x="880" y="600"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Tel_1" value="Metrics and Traces" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#b85450;" parent="1" source="SFN_1" target="CW_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Tel_Audit" value="Write Audit Record" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#b85450;" parent="1" source="Lambda_Pool" target="AuditLog_1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Deployment: Strands + AgentCore" id="1">
+        <mxGraphModel dx="1193" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="AWS_Cloud_2" value="AWS Cloud Boundary (Managed Serverless Environment)" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;fillColor=none;strokeColor=#FF9900;dashed=1;strokeWidth=2;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="1320" height="820" as="geometry"/>
+                </mxCell>
+
+                <!-- Observability and Identity Plane -->
+                <mxCell id="Obs_Plane_2" value="Observability and Identity Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;strokeColor=#b85450;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="80" width="260" height="740" as="geometry"/>
+                </mxCell>
+                <mxCell id="CW_2" value="Amazon CloudWatch&#xa;(Aggregated Logs)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="130" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="AC_Obs" value="AgentCore Observability&#xa;(Agentic Trace Routing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="220" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="AuditLog_2" value="S3 Object Lock (WORM)&#xa;Immutable Audit Records&#xa;(AI output vs Human approval,&#xa;legally admissible)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="310" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="IDC_2" value="IAM Identity Center&#xa;(User SSO + RBAC&#xa;+ Threshold Escalation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="560" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="CloudTrail_2" value="AWS CloudTrail&#xa;(API-level Action Log)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="430" width="200" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- AgentCore Infrastructure Plane -->
+                <mxCell id="AC_Plane" value="AgentCore Infrastructure Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="220" width="940" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="AC_Runtime" value="AgentCore Runtime (MicroVMs)&#xa;AWS Strands Supervisor Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="380" y="280" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="AC_Code" value="AgentCore Code Interpreter&#xa;(Deterministic Math Sandbox)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="420" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="AC_Gateway" value="AgentCore Gateway&#xa;(ERP MCP Tools)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="420" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="AC_PII" value="Comprehend PII Tool&#xa;(Tag and Redact Pass&#xa;before LLM payloads)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="310" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="AC_PMIS_Poller" value="EventBridge PMIS Poller&#xa;(Idempotent claim state observer.&#xa;Eventually consistent.)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="310" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- Application and GenAI Plane -->
+                <mxCell id="App_Plane" value="Application and GenAI Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="80" width="940" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="Q_App_Deploy" value="Amazon Q Apps&#xa;(Extraction Review, ERP Approval,&#xa;Redline Review HITL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="110" width="220" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="Bedrock_KB" value="Bedrock Knowledge Bases&#xa;(Managed Chunking/Parsing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="120" width="200" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- Storage and Vector Data Plane -->
+                <mxCell id="Data_Plane_2" value="Storage and Vector Data Plane" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="620" width="940" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="S3_2" value="Amazon S3&#xa;(Source PDFs)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="660" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="OpenSearch" value="OpenSearch Serverless&#xa;(Managed Vector Store)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="660" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="TemplateRepo_2" value="Template Repository&#xa;(S3 / ProjectWise&#xa;Change Notice Templates)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="660" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="FeedbackStore_2" value="Feedback Store&#xa;(Human Corrections&#xa;for Model Improvement)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="660" width="160" height="80" as="geometry"/>
+                </mxCell>
+
+                <!-- Edges -->
+                <mxCell id="E2_UI_Agent" parent="1" source="Q_App_Deploy" target="AC_Runtime" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_Agent_PII" value="PII Pass" parent="1" source="AC_Runtime" target="AC_PII" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_Agent_KB" parent="1" source="AC_Runtime" target="Bedrock_KB" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_Agent_Code" parent="1" source="AC_Runtime" target="AC_Code" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_Agent_Gate" parent="1" source="AC_Runtime" target="AC_Gateway" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_Agent_Poller" parent="1" source="AC_Runtime" target="AC_PMIS_Poller" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_KB_S3" parent="1" source="Bedrock_KB" target="S3_2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_KB_OS" parent="1" source="Bedrock_KB" target="OpenSearch" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_Agent_Tmpl" value="Template Retrieval" parent="1" source="AC_Runtime" target="TemplateRepo_2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="E2_Agent_Feedback" value="Write Correction" parent="1" source="AC_Runtime" target="FeedbackStore_2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Tel_AC" value="Agentic Traces" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#b85450;" parent="1" source="AC_Runtime" target="AC_Obs" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Tel_Audit2" value="Write Audit Record" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#b85450;" parent="1" source="AC_Runtime" target="AuditLog_2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Id_Q" value="User Auth" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d6b656;" parent="1" source="Q_App_Deploy" target="IDC_2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
