@@ -1,5 +1,5 @@
 # AI-Enabled Commercial Change Management
-### Senior Solution Architect — Operational AI | AECOM Take-Home Assignment
+### Principal Solution Architect — Operational AI | AECOM Take-Home Assignment
 
 ---
 
