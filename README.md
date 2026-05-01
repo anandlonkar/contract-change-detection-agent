@@ -1,5 +1,5 @@
 # AI-Enabled Commercial Change Management
-### Senior Solution Architect — Operational AI | the client Take-Home Assignment
+### Principal Solution Architect, Operational AI — Take-Home Architecture Assignment
 
 ---
 
