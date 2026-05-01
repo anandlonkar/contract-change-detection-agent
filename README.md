@@ -8,11 +8,10 @@
 ```
 ├── README.md                          # This file — diagrams + architecture decision log
 ├── Solution_v8.md                     # Full technical solution document
-└── presentation/
-    └── AECOM_AI_Change_Management.pptx
+├── deployments_v8.drawio              # deployment diagram with AWS services
+├── solution_v8_data_flow.drawio       # Data flow diagrams
+├── orchestration_v8.drawio            # Step functions orchestration
 ```
-
-> **Diagrams** are embedded below as Mermaid — rendered natively by GitHub, no plugins required.
 
 ---
 
