@@ -1,4 +1,4 @@
-# AI-Enabled Commercial Change Management
+# AI-Enabled Contract Change Management
 ### Principal Solution Architect, Operational AI — Take-Home Architecture Assignment
 
 ---
